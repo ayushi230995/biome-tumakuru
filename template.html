@@ -362,11 +362,14 @@ function fitTo(list) {
   map.flyToBounds(bounds, { padding: [40, 40], maxZoom: 15, duration: 0.6 });
 }
 
+// Phones stack the list under the map, so scrolling the list would pull the map off screen.
+const isNarrow = () => window.matchMedia('(max-width: 760px)').matches;
+
 function setActive(id) {
   state.active = id;
   markers.forEach((m, mid) => m.getElement()?.querySelector('.pin')?.classList.toggle('active', mid === id));
   document.querySelectorAll('.site').forEach(el => el.classList.toggle('active', el.dataset.id === id));
-  if (id) document.querySelector(`.site[data-id="${id}"]`)?.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+  if (id && !isNarrow()) document.querySelector(`.site[data-id="${id}"]`)?.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
 }
 
 // ---------- Events ----------
@@ -375,7 +378,7 @@ sitesEl.addEventListener('click', e => {
   const btn = e.target.closest('.site');
   if (!btn) return;
   const marker = markers.get(btn.dataset.id);
-  if (window.matchMedia('(max-width: 760px)').matches) map.getContainer().scrollIntoView({ behavior: 'smooth' });
+  if (isNarrow()) map.getContainer().scrollIntoView({ behavior: 'smooth' });
   map.flyTo(marker.getLatLng(), Math.max(map.getZoom(), 15), { duration: 0.6 });
   map.once('moveend', () => marker.openPopup());
 });
