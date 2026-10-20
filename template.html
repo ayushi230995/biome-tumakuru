@@ -83,8 +83,12 @@
   .pop dl { display: grid; grid-template-columns: auto 1fr; gap: 3px 14px; margin: 0 0 10px; }
   .pop dt { color: var(--muted); }
   .pop dd { margin: 0; text-align: right; font-variant-numeric: tabular-nums; font-weight: 550; }
-  .pop a { color: var(--rwh); font-weight: 550; text-decoration: none; margin-right: 12px; }
+  .pop-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 14px; }
+  .pop a { color: var(--rwh); font-weight: 550; text-decoration: none; }
   .pop a:hover { text-decoration: underline; }
+  .pop a.pop-photos { display: inline-flex; align-items: center; gap: 6px; background: var(--c); color: #fff; padding: 6px 11px; border-radius: 7px; }
+  .pop a.pop-photos:hover { text-decoration: none; filter: brightness(1.1); }
+  .pop-photos svg { width: 15px; height: 15px; }
 
   /* Legend */
   .legend { background: rgba(255,255,255,.94); padding: 8px 11px; border-radius: 8px; box-shadow: 0 1px 5px rgba(0,0,0,.2); font: 12px/1.6 var(--font); color: var(--ink); }
@@ -129,7 +133,7 @@
     <ol class="sites" id="sites"></ol>
 
     <footer>
-      <p>Sites: BIOME Work at Tumkur Locations (BIOME Work Details).</p>
+      <p>Sites and photos: BIOME Work at Tumkur Locations.</p>
       <p>Boundary: KGIS, Tumakuru City Corporation (town code 1810).</p>
       <p>Built __BUILD_DATE__.</p>
     </footer>
@@ -155,6 +159,7 @@ const CATEGORIES = {
   }
 };
 
+const CAMERA = '<svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M9 4.5 7.6 6.5H5A2.5 2.5 0 0 0 2.5 9v8.5A2.5 2.5 0 0 0 5 20h14a2.5 2.5 0 0 0 2.5-2.5V9A2.5 2.5 0 0 0 19 6.5h-2.6L15 4.5H9zm3 4.5a4 4 0 1 1 0 8 4 4 0 0 1 0-8zm0 2a2 2 0 1 0 0 4 2 2 0 0 0 0-4z"/></svg>';
 const ALL = 'All';
 const state = { category: ALL, year: ALL, funder: ALL, q: '', active: null };
 const features = SITES.features;
@@ -231,17 +236,18 @@ function popupHtml(f) {
         ['Potential rainwater harvest', litres(p.potential_harvest_l)]
       ];
   const dl = rows.filter(r => r[1]).map(([k, v]) => `<dt>${k}</dt><dd>${esc(v)}</dd>`).join('');
+  // Photos live in BIOME's shared SharePoint folders, which can't be embedded, so they open in a new tab.
   const links = [
-    p.maps_url && `<a href="${esc(p.maps_url)}" target="_blank" rel="noopener">Google Maps ↗</a>`,
-    p.photos_url && `<a href="${esc(p.photos_url)}" target="_blank" rel="noopener">Photos ↗</a>`
+    p.photos_url && `<a class="pop-photos" href="${esc(p.photos_url)}" target="_blank" rel="noopener">${CAMERA}View site photos</a>`,
+    p.maps_url && `<a href="${esc(p.maps_url)}" target="_blank" rel="noopener">Google Maps ↗</a>`
   ].filter(Boolean).join('');
   return `<div class="pop" style="--c:${cat.color}">
     <div class="pop-kind">${cat.label} &middot; ${esc(p.institution)}</div>
     <h3>${esc(p.name)}</h3>
-    <p class="pop-meta">${yearLabel(p.year)} &middot; Funded by ${esc(p.funder)}</p>
+    <p class="pop-meta">${p.locality ? `${esc(p.locality)} &middot; ` : ''}${yearLabel(p.year)} &middot; Funded by ${esc(p.funder)}</p>
     <ul class="pop-tags">${p.interventions.map(i => `<li>${esc(i)}</li>`).join('')}</ul>
     ${dl ? `<dl>${dl}</dl>` : ''}
-    ${links}
+    <div class="pop-actions">${links}</div>
   </div>`;
 }
 
@@ -267,7 +273,7 @@ function matches(f) {
   return (state.category === ALL || p.category === state.category)
     && (state.year === ALL || p.year === state.year)
     && (state.funder === ALL || p.funder === state.funder)
-    && (!state.q || `${p.name} ${p.funder} ${p.institution}`.toLowerCase().includes(state.q));
+    && (!state.q || `${p.name} ${p.locality || ''} ${p.funder} ${p.institution}`.toLowerCase().includes(state.q));
 }
 
 function buildChips() {
@@ -322,7 +328,7 @@ function renderList(list) {
         const p = f.properties;
         return `<li><button type="button" class="site" data-id="${p.id}" style="--c:${CATEGORIES[p.category].color}">
           <span class="dot"></span><span class="t">${esc(p.name)}</span>
-          <span class="s">${yearLabel(p.year)} &middot; ${esc(p.funder)} &middot; ${esc(p.institution)}</span>
+          <span class="s">${yearLabel(p.year)} &middot; ${esc(p.funder)} &middot; ${esc(p.locality || p.institution)}</span>
         </button></li>`;
       }).join('')
     : '<li class="empty">No sites match these filters.</li>';

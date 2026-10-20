@@ -15,6 +15,7 @@
     "category": "Rooftop rainwater harvesting",
     "institution": "School",
     "name": "GMHPS High School Extension",
+    "locality": "Tumkur CMC, Ward-15",
     "year": "2023-24",
     "funder": "Wipro",
     "interventions": [
@@ -30,7 +31,7 @@
     "daily_water_demand_l": 2800,
     "potential_harvest_l": 19200,
     "maps_url": "https://goo.gl/maps/4EPjBVayABD1xM3x5",
-    "photos_url": null
+    "photos_url": "https://biomesolutions-my.sharepoint.com/:f:/g/personal/water_biome-solutions_com/IgC8OeZXYKvNTY610pj1l27qAcDXhrd-a8cLgLCS1meeIRY?e=jgQOv5"
    }
   },
   {
@@ -47,6 +48,7 @@
     "category": "Rooftop rainwater harvesting",
     "institution": "School",
     "name": "GMHPS Guluru school",
+    "locality": "Guluru",
     "year": "2023-24",
     "funder": "Wipro",
     "interventions": [
@@ -62,7 +64,7 @@
     "daily_water_demand_l": 4600,
     "potential_harvest_l": 23220,
     "maps_url": "https://goo.gl/maps/JxorUCCX73FRgXTi6",
-    "photos_url": null
+    "photos_url": "https://biomesolutions-my.sharepoint.com/:f:/g/personal/water_biome-solutions_com/IgA7uCYSf9H8SaXjbQS_1YCiAZ77X0S_aioJuWY0KyGLGGU?e=rkNDQb"
    }
   },
   {
@@ -79,6 +81,7 @@
     "category": "Rooftop rainwater harvesting",
     "institution": "School",
     "name": "GMHPS Bugudanahalli school",
+    "locality": "Bugudanahalli",
     "year": "2023-24",
     "funder": "Wipro",
     "interventions": [
@@ -94,7 +97,7 @@
     "daily_water_demand_l": 3600,
     "potential_harvest_l": 20124,
     "maps_url": "https://goo.gl/maps/MpfFMMs9ktvBZqcH7",
-    "photos_url": null
+    "photos_url": "https://biomesolutions-my.sharepoint.com/:f:/g/personal/water_biome-solutions_com/IgCuExy4yJP3QZonfdkodiBUAfYpTKZXvHZocP21CSCqT8M?e=AFEijU"
    }
   },
   {
@@ -111,6 +114,7 @@
     "category": "Rooftop rainwater harvesting",
     "institution": "School",
     "name": "GMHPS Kora school",
+    "locality": "Kora",
     "year": "2023-24",
     "funder": "Wipro",
     "interventions": [
@@ -126,7 +130,7 @@
     "daily_water_demand_l": 4660,
     "potential_harvest_l": 20124,
     "maps_url": "https://goo.gl/maps/yNGUzjT4o7QSVcwo9",
-    "photos_url": null
+    "photos_url": "https://biomesolutions-my.sharepoint.com/:f:/g/personal/water_biome-solutions_com/IgBTvzOCyDAKQoMuMt9pqHVAAXNjnUwkoErIKjskhrWWztw?e=EB2VeR"
    }
   },
   {
@@ -143,6 +147,7 @@
     "category": "Rooftop rainwater harvesting",
     "institution": "School",
     "name": "GMHPS Badihalli",
+    "locality": "Badihalli",
     "year": "2024-25",
     "funder": "Wipro",
     "interventions": [
@@ -158,7 +163,7 @@
     "daily_water_demand_l": 3000,
     "potential_harvest_l": 17492,
     "maps_url": "https://goo.gl/maps/iw96omCVPbrBfTW57",
-    "photos_url": null
+    "photos_url": "https://biomesolutions-my.sharepoint.com/:f:/g/personal/water_biome-solutions_com/IgDtQmboJWWdSpyFXG_lvTi1Adu1YdpA3rtZ_SbFL6gV5b8?e=BjshEB"
    }
   },
   {
@@ -175,6 +180,7 @@
     "category": "Rooftop rainwater harvesting",
     "institution": "School",
     "name": "GHS High School Extn",
+    "locality": "Tumkur CMC, Ward-15",
     "year": "2024-25",
     "funder": "Wipro",
     "interventions": [
@@ -190,7 +196,7 @@
     "daily_water_demand_l": 2800,
     "potential_harvest_l": 20536,
     "maps_url": "https://maps.app.goo.gl/b8Kzg7doeY8xEoMB8",
-    "photos_url": null
+    "photos_url": "https://biomesolutions-my.sharepoint.com/:f:/g/personal/water_biome-solutions_com/IgBM3pndS7ljTZ1cHcWVElabAVr2bSmF3EkzPgtshGwM-XY?e=yoqh3o"
    }
   },
   {
@@ -207,6 +213,7 @@
     "category": "Rooftop rainwater harvesting",
     "institution": "School",
     "name": "KPS Bellavi High Building 1",
+    "locality": "Bellavi",
     "year": "2024-25",
     "funder": "Wipro",
     "interventions": [
@@ -222,7 +229,7 @@
     "daily_water_demand_l": 10000,
     "potential_harvest_l": 17079,
     "maps_url": "https://maps.app.goo.gl/b2Gzv7wzWD1czCcR8",
-    "photos_url": null
+    "photos_url": "https://biomesolutions-my.sharepoint.com/:f:/g/personal/water_biome-solutions_com/IgBujqPCib4UTY-qhHOz4mLfAeADZMoPuhzOAocM9joKnqw?e=aXyXpk"
    }
   },
   {
@@ -239,6 +246,7 @@
     "category": "Rooftop rainwater harvesting",
     "institution": "School",
     "name": "KPS Bellavi Primary (HM Building)",
+    "locality": "Bellavi",
     "year": "2024-25",
     "funder": "Wipro",
     "interventions": [
@@ -254,7 +262,7 @@
     "daily_water_demand_l": 13000,
     "potential_harvest_l": 18369,
     "maps_url": "https://goo.gl/maps/7TCH2MQvXwNY8NUj6",
-    "photos_url": null
+    "photos_url": "https://biomesolutions-my.sharepoint.com/:f:/g/personal/water_biome-solutions_com/IgA-Cx9HrTMtRrX_vwPDzbwbAUbZJevs38oNms_S1JQUYx8?e=vbd1lz"
    }
   },
   {
@@ -271,6 +279,7 @@
     "category": "Rooftop rainwater harvesting",
     "institution": "School",
     "name": "KPS Bellavi Primary (Bore Well Building)",
+    "locality": "Bellavi",
     "year": "2024-25",
     "funder": "Wipro",
     "interventions": [
@@ -286,7 +295,7 @@
     "daily_water_demand_l": 13000,
     "potential_harvest_l": 17492,
     "maps_url": "https://goo.gl/maps/7TCH2MQvXwNY8NUj6",
-    "photos_url": null
+    "photos_url": "https://biomesolutions-my.sharepoint.com/:f:/g/personal/water_biome-solutions_com/IgA-nhCB7jbHSaTE8ByMyr5bAb-TH03XJPmTISsioGNI43E?e=abxbs0"
    }
   },
   {
@@ -303,6 +312,7 @@
     "category": "Rooftop rainwater harvesting",
     "institution": "School",
     "name": "GMHPS Antharasanahalli",
+    "locality": "Antharasanahalli",
     "year": "2024-25",
     "funder": "Wipro",
     "interventions": [
@@ -318,7 +328,7 @@
     "daily_water_demand_l": 3500,
     "potential_harvest_l": 13467,
     "maps_url": "https://goo.gl/maps/UTYsXoMGJMMbgrXK9",
-    "photos_url": null
+    "photos_url": "https://biomesolutions-my.sharepoint.com/:f:/g/personal/water_biome-solutions_com/IgAmFrxjsoUGToBoFmRGNqmxAf7mGF18PNRj-AWMLYtgxZo?e=JKDI58"
    }
   },
   {
@@ -335,6 +345,7 @@
     "category": "Rooftop rainwater harvesting",
     "institution": "School",
     "name": "GMHPS AS Palya (Shanthinagara)",
+    "locality": "Shanthinagara",
     "year": "2024-25",
     "funder": "Light & Wonder",
     "interventions": [
@@ -349,7 +360,7 @@
     "daily_water_demand_l": 2500,
     "potential_harvest_l": 12900,
     "maps_url": "https://maps.app.goo.gl/usB5ivkdpHv2jXPJA",
-    "photos_url": null
+    "photos_url": "https://biomesolutions-my.sharepoint.com/:f:/g/personal/water_biome-solutions_com/IgA3HBWl1A3vR5klIQjbsjXJARlx12z0n8CCtCJtynT7Ao0?e=YQCvpN"
    }
   },
   {
@@ -366,6 +377,7 @@
     "category": "Rooftop rainwater harvesting",
     "institution": "School",
     "name": "GMHPS Dibbur",
+    "locality": "Dibbur",
     "year": "2024-25",
     "funder": "Light & Wonder",
     "interventions": [
@@ -380,7 +392,7 @@
     "daily_water_demand_l": 3500,
     "potential_harvest_l": 12642,
     "maps_url": "https://maps.app.goo.gl/hpjwd4ajSYSnQXa4A",
-    "photos_url": null
+    "photos_url": "https://biomesolutions-my.sharepoint.com/:f:/g/personal/water_biome-solutions_com/IgASiPdmPxRyQK2ddjzftbcxAVX5tjKKQDHlrHCamm6FBXA?e=Xk3DiJ"
    }
   },
   {
@@ -397,6 +409,7 @@
     "category": "Rooftop rainwater harvesting",
     "institution": "School",
     "name": "GMHPS Bhimasandra",
+    "locality": "Bhimasandra",
     "year": "2024-25",
     "funder": "Light & Wonder",
     "interventions": [
@@ -411,7 +424,7 @@
     "daily_water_demand_l": 3000,
     "potential_harvest_l": 10836,
     "maps_url": "https://maps.app.goo.gl/udELsTSYAcprrDHR7",
-    "photos_url": null
+    "photos_url": "https://biomesolutions-my.sharepoint.com/:f:/g/personal/water_biome-solutions_com/IgD6HiJJE7ReR5co6GzcqoMTAZzC4L66H0a7sgq3SLMO-ss?e=sHCZHo"
    }
   },
   {
@@ -428,6 +441,7 @@
     "category": "Rooftop rainwater harvesting",
     "institution": "School",
     "name": "GHPS Belagumba",
+    "locality": "Belagumba",
     "year": "2024-25",
     "funder": "Light & Wonder",
     "interventions": [
@@ -442,7 +456,7 @@
     "daily_water_demand_l": 3000,
     "potential_harvest_l": 12384,
     "maps_url": "https://goo.gl/maps/UiS1Fo4CqUEvXjzf8",
-    "photos_url": null
+    "photos_url": "https://biomesolutions-my.sharepoint.com/:f:/g/personal/water_biome-solutions_com/IgDPpzsXmA0qRKSiosPEAX0vAWgVSqj4XTA9TwbBPzLKrgs?e=QANnVN"
    }
   },
   {
@@ -459,6 +473,7 @@
     "category": "Rooftop rainwater harvesting",
     "institution": "Hostel",
     "name": "BCWD 2447, Railway Station Road Hostel",
+    "locality": "Tumkur CMC, Ward-15",
     "year": "2025-26",
     "funder": "Give Do",
     "interventions": [
@@ -477,7 +492,7 @@
     ],
     "potential_harvest_l": 14396,
     "maps_url": "https://goo.gl/maps/iw96omCVPbrBfTW57",
-    "photos_url": null
+    "photos_url": "https://biomesolutions-my.sharepoint.com/:f:/g/personal/water_biome-solutions_com/IgCjohCIHFqHTaFAwCodOdT_Ac-RVrjKRKMz27ikqGTfBQs?e=IGkO3R"
    }
   },
   {
@@ -494,6 +509,7 @@
     "category": "Rooftop rainwater harvesting",
     "institution": "Hostel",
     "name": "BCWD 2446, Saibadavana Girls Hostel",
+    "locality": "Saibadavana Layout",
     "year": "2026-27",
     "funder": "Imagine Tech",
     "interventions": [
@@ -509,7 +525,7 @@
     "daily_water_demand_l": 35000,
     "potential_harvest_l": 27600,
     "maps_url": "https://maps.app.goo.gl/mzYJK8qWyVZjNUdCA",
-    "photos_url": null
+    "photos_url": "https://biomesolutions-my.sharepoint.com/:f:/g/personal/water_biome-solutions_com/IgCrmylvxrQRR6WxJzHFKnsrAVCY3l0VoMBVSYnXPWXv11Y?e=haUKAh"
    }
   },
   {
@@ -526,6 +542,7 @@
     "category": "Rooftop rainwater harvesting",
     "institution": "Hostel",
     "name": "BCWD 2437, Sathamangala Boys Hostel",
+    "locality": "Sathamangala Area",
     "year": "2026-27",
     "funder": "Imagine Tech",
     "interventions": [
@@ -541,7 +558,7 @@
     "daily_water_demand_l": 40000,
     "potential_harvest_l": 12487,
     "maps_url": "https://maps.app.goo.gl/UDvFZZBtdw7adb4EA",
-    "photos_url": null
+    "photos_url": "https://biomesolutions-my.sharepoint.com/:f:/g/personal/water_biome-solutions_com/IgDWtlJSZ-WYSKBW0baOpoCPAWpQ7w50JDjYRjU3uqp6GAc?e=XaJTAk"
    }
   },
   {
@@ -558,6 +575,7 @@
     "category": "Open well rejuvenation",
     "institution": "Open well",
     "name": "Upprahalli Well",
+    "locality": null,
     "year": "2023-24",
     "funder": "Wipro",
     "interventions": [
@@ -569,7 +587,7 @@
     "well_volume_l": 81000,
     "households": 70,
     "maps_url": "https://goo.gl/maps/429QpkiDpQqcaxTM9",
-    "photos_url": null
+    "photos_url": "https://biomesolutions-my.sharepoint.com/:f:/g/personal/water_biome-solutions_com/IgAnZHAnea0gToqKnvhhAv0XAdrvNXwDsCePwBqAFUFJbks?e=cHjfGc"
    }
   },
   {
@@ -586,6 +604,7 @@
     "category": "Open well rejuvenation",
     "institution": "Open well",
     "name": "Devarapatana Well Ward No 35",
+    "locality": null,
     "year": "2023-24",
     "funder": "Wipro",
     "interventions": [
@@ -597,7 +616,7 @@
     "well_volume_l": 21500,
     "households": 30,
     "maps_url": "https://goo.gl/maps/7xbKWkVSKLjSkEks7",
-    "photos_url": null
+    "photos_url": "https://biomesolutions-my.sharepoint.com/:f:/g/personal/water_biome-solutions_com/IgDTUOZGxQF6SZEkRJRZ5nsoAayNqm9N0GoUnhCFTfh99s0?e=pZRNyn"
    }
   },
   {
@@ -614,6 +633,7 @@
     "category": "Open well rejuvenation",
     "institution": "Open well",
     "name": "Indria Nagara Well Ward no 34, Kythasandra",
+    "locality": null,
     "year": "2023-24",
     "funder": "Wipro",
     "interventions": [
@@ -625,7 +645,7 @@
     "well_volume_l": 18500,
     "households": 70,
     "maps_url": "https://goo.gl/maps/sxde8NMsUYfjWnxN6",
-    "photos_url": null
+    "photos_url": "https://biomesolutions-my.sharepoint.com/:f:/g/personal/water_biome-solutions_com/IgBfgaO0PGyBRrWarwU_TEblAUmjeA_zRt4pxu90u01vEXs?e=7S1AJK"
    }
   },
   {
@@ -642,6 +662,7 @@
     "category": "Open well rejuvenation",
     "institution": "Open well",
     "name": "Maruthi Nagar Ward no 34, Kythasandra",
+    "locality": null,
     "year": "2024-25",
     "funder": "Wipro",
     "interventions": [
@@ -653,7 +674,7 @@
     "well_volume_l": null,
     "households": null,
     "maps_url": "https://maps.app.goo.gl/2PC4WFxpfChKd7ux8",
-    "photos_url": null
+    "photos_url": "https://biomesolutions-my.sharepoint.com/:f:/g/personal/water_biome-solutions_com/IgD3bUuvbwc5T7_M3Pgx4K50AQBqUA6To2sPS00nof653nY?e=s1kYU4"
    }
   }
  ]
