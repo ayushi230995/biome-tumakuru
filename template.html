@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>BIOME Work at Tumakuru</title>
+<meta name="description" content="Map of BIOME rooftop rainwater harvesting and open well rejuvenation sites in and around Tumakuru.">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+      integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
+<style>
+  :root {
+    --bg: #f6f5f1;
+    --surface: #ffffff;
+    --ink: #1d2422;
+    --muted: #5d6865;
+    --faint: #8a9491;
+    --line: #e3e1da;
+    --rwh: #1f5fbf;
+    --well: #c0640a;
+    --boundary: #2f3b38;
+    --radius: 10px;
+    --font: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; height: 100%; }
+  body { background: var(--bg); color: var(--ink); font: 14px/1.45 var(--font); }
+  button { font: inherit; color: inherit; }
+
+  .app { display: grid; grid-template-columns: 380px 1fr; height: 100vh; }
+  .panel { overflow-y: auto; background: var(--bg); border-right: 1px solid var(--line); display: flex; flex-direction: column; }
+  .panel > * { padding-inline: 20px; }
+  #map { height: 100%; background: #e8e6df; }
+
+  header { padding-top: 22px; padding-bottom: 6px; }
+  .eyebrow { margin: 0 0 6px; font-size: 11px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--faint); }
+  h1 { margin: 0 0 8px; font-size: 22px; line-height: 1.2; font-weight: 650; letter-spacing: -.01em; }
+  .lede { margin: 0; color: var(--muted); }
+
+  .kpis { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; padding-top: 16px; padding-bottom: 4px; }
+  .kpi { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 10px 12px; }
+  .kpi b { display: block; font-size: 21px; font-weight: 650; font-variant-numeric: tabular-nums; letter-spacing: -.01em; }
+  .kpi span { display: block; font-size: 12px; color: var(--muted); }
+
+  .filters { padding-top: 14px; display: grid; gap: 12px; }
+  .filter-label { display: block; font-size: 11px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; color: var(--faint); margin-bottom: 6px; }
+  .chips { display: flex; flex-wrap: wrap; gap: 6px; }
+  .chip { border: 1px solid var(--line); background: var(--surface); border-radius: 999px; padding: 4px 11px; font-size: 13px; cursor: pointer; display: inline-flex; align-items: center; gap: 6px; }
+  .chip:hover { border-color: #c9c6bc; }
+  .chip[aria-pressed="true"] { background: var(--ink); border-color: var(--ink); color: #fff; }
+  .chip .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--c); }
+  .search { width: 100%; border: 1px solid var(--line); background: var(--surface); border-radius: 8px; padding: 8px 11px; font: inherit; }
+  .search:focus, .chip:focus-visible, .site:focus-visible { outline: 2px solid var(--rwh); outline-offset: 1px; }
+
+  .list-head { display: flex; align-items: baseline; justify-content: space-between; padding-top: 18px; padding-bottom: 6px; }
+  .list-head span { font-size: 12px; color: var(--muted); }
+  .link-btn { border: 0; background: none; padding: 0; color: var(--rwh); cursor: pointer; font-size: 12px; }
+  .link-btn:hover { text-decoration: underline; }
+  .sites { list-style: none; margin: 0; padding-bottom: 8px; display: grid; gap: 4px; }
+  .site { width: 100%; text-align: left; border: 1px solid transparent; background: none; border-radius: 8px; padding: 8px 10px; cursor: pointer; display: grid; grid-template-columns: 12px 1fr; column-gap: 10px; }
+  .site:hover, .site.active { background: var(--surface); border-color: var(--line); }
+  .site .dot { width: 10px; height: 10px; border-radius: 50%; background: var(--c); margin-top: 5px; }
+  .site .t { font-weight: 550; }
+  .site .s { grid-column: 2; font-size: 12px; color: var(--muted); }
+  .empty { color: var(--muted); padding: 12px 10px; }
+
+  footer { margin-top: auto; padding-top: 14px; padding-bottom: 18px; font-size: 11.5px; color: var(--faint); border-top: 1px solid var(--line); }
+  footer p { margin: 0 0 4px; }
+
+  /* Map markers */
+  .site-marker { background: none; border: 0; }
+  .pin { width: 24px; height: 24px; border-radius: 50%; display: grid; place-items: center; color: #fff; background: var(--c); border: 2px solid #fff; box-shadow: 0 1px 4px rgba(0,0,0,.35); transition: transform .12s; }
+  .pin svg { width: 13px; height: 13px; }
+  .pin.hover, .pin.active { transform: scale(1.3); box-shadow: 0 0 0 3px rgba(255,255,255,.9), 0 0 0 5px var(--c), 0 2px 6px rgba(0,0,0,.3); }
+
+  /* Popups */
+  .leaflet-popup-content-wrapper { border-radius: 12px; }
+  .leaflet-popup-content { margin: 14px 16px; font: 13px/1.45 var(--font); color: var(--ink); min-width: 230px; }
+  .pop-kind { font-size: 11px; font-weight: 600; letter-spacing: .05em; text-transform: uppercase; color: var(--c); }
+  .pop h3 { margin: 2px 0 2px; font-size: 15px; line-height: 1.3; }
+  .pop-meta { margin: 0 0 8px; color: var(--muted); }
+  .pop-tags { display: flex; flex-wrap: wrap; gap: 4px; margin: 0 0 10px; padding: 0; list-style: none; }
+  .pop-tags li { background: #f0eee8; border-radius: 4px; padding: 1px 7px; font-size: 12px; }
+  .pop dl { display: grid; grid-template-columns: auto 1fr; gap: 3px 14px; margin: 0 0 10px; }
+  .pop dt { color: var(--muted); }
+  .pop dd { margin: 0; text-align: right; font-variant-numeric: tabular-nums; font-weight: 550; }
+  .pop a { color: var(--rwh); font-weight: 550; text-decoration: none; margin-right: 12px; }
+  .pop a:hover { text-decoration: underline; }
+
+  /* Legend */
+  .legend { background: rgba(255,255,255,.94); padding: 8px 11px; border-radius: 8px; box-shadow: 0 1px 5px rgba(0,0,0,.2); font: 12px/1.6 var(--font); color: var(--ink); }
+  .legend div { display: flex; align-items: center; gap: 8px; }
+  .legend .pin { width: 16px; height: 16px; border-width: 1.5px; box-shadow: none; }
+  .legend .pin svg { width: 9px; height: 9px; }
+  .legend .line { width: 16px; border-top: 2px dashed var(--boundary); }
+
+  @media (max-width: 760px) {
+    .app { display: flex; flex-direction: column; height: auto; }
+    .panel { display: contents; }
+    header { order: 0; }
+    #map { order: 1; height: 62vh; min-height: 360px; margin-top: 12px; }
+    .kpis { order: 2; } .filters { order: 3; } .list-head { order: 4; } .sites { order: 5; } footer { order: 6; }
+    .panel > * { padding-inline: 16px; }
+    .legend { font-size: 11px; line-height: 1.5; padding: 5px 8px; }
+  }
+</style>
+</head>
+<body>
+<div class="app">
+  <aside class="panel">
+    <header>
+      <p class="eyebrow">BIOME &middot; Tumakuru</p>
+      <h1>Water work at Tumakuru</h1>
+      <p class="lede">Rooftop rainwater harvesting at schools and hostels, and open well rejuvenation, in and around Tumakuru City.</p>
+    </header>
+
+    <section class="kpis" id="kpis" aria-live="polite"></section>
+
+    <section class="filters">
+      <div><span class="filter-label">Work type</span><div class="chips" data-filter="category"></div></div>
+      <div><span class="filter-label">Year</span><div class="chips" data-filter="year"></div></div>
+      <div><span class="filter-label">Funded by</span><div class="chips" data-filter="funder"></div></div>
+      <input class="search" id="search" type="search" placeholder="Search sites" aria-label="Search sites">
+    </section>
+
+    <div class="list-head">
+      <span id="count"></span>
+      <button class="link-btn" id="reset" type="button">Reset filters</button>
+    </div>
+    <ol class="sites" id="sites"></ol>
+
+    <footer>
+      <p>Sites: BIOME Work at Tumkur Locations (BIOME Work Details).</p>
+      <p>Boundary: KGIS, Tumakuru City Corporation (town code 1810).</p>
+      <p>Built __BUILD_DATE__.</p>
+    </footer>
+  </aside>
+  <main id="map" aria-label="Map of sites"></main>
+</div>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+        integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+<script>
+// Data is inlined by build_index_html.py so the page also works when opened from disk.
+const SITES = __SITES_GEOJSON__;
+const BOUNDARY = __BOUNDARY_GEOJSON__;
+
+const CATEGORIES = {
+  'Rooftop rainwater harvesting': {
+    key: 'rwh', label: 'Rooftop RWH', color: 'var(--rwh)',
+    glyph: '<svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2.5C8.3 7.2 5.5 11 5.5 14.3a6.5 6.5 0 0 0 13 0C18.5 11 15.7 7.2 12 2.5z"/></svg>'
+  },
+  'Open well rejuvenation': {
+    key: 'well', label: 'Open well', color: 'var(--well)',
+    glyph: '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="6.5" fill="none" stroke="currentColor" stroke-width="3.5"/></svg>'
+  }
+};
+
+const ALL = 'All';
+const state = { category: ALL, year: ALL, funder: ALL, q: '', active: null };
+const features = SITES.features;
+
+const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+const num = n => n.toLocaleString('en-US');
+const litres = v => v == null ? null : Array.isArray(v) ? `${num(v[0])}–${num(v[1])} L` : `${num(v)} L`;
+const feetToM = ft => `${(ft * 0.3048).toFixed(1)} m (${ft} ft)`;
+const yearLabel = y => y.replace('-', '–');
+const latLng = f => [f.geometry.coordinates[1], f.geometry.coordinates[0]];
+const sum = (list, key) => list.reduce((t, f) => t + (f.properties[key] || 0), 0);
+
+// ---------- Map ----------
+// Esri tiles need no API key and no Referer, so they load both from GitHub Pages and
+// from a file opened on disk. (CARTO now needs an API key; OpenStreetMap's servers
+// block some requests without a Referer, so it is offered but not the default.)
+const esri = (service, attribution) => L.tileLayer(
+  `https://server.arcgisonline.com/ArcGIS/rest/services/${service}/MapServer/tile/{z}/{y}/{x}`,
+  { maxZoom: 19, attribution: `Tiles &copy; Esri &mdash; ${attribution}` }
+);
+const baseLayers = {
+  'Streets': esri('World_Street_Map', 'Esri, HERE, Garmin, USGS, NGA, EPA, USDA, NPS'),
+  'Satellite': L.layerGroup([
+    esri('World_Imagery', 'Esri, Maxar, Earthstar Geographics, and the GIS User Community'),
+    esri('Reference/World_Boundaries_and_Places', 'Esri, HERE, Garmin')
+  ]),
+  'Topographic': esri('World_Topo_Map', 'Esri, HERE, Garmin, Intermap, USGS, FAO, NPS, NRCAN'),
+  'OpenStreetMap': L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    maxZoom: 19, attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+  })
+};
+
+const map = L.map('map', { layers: [baseLayers.Streets], zoomSnap: 0.5 });
+
+// White casing under a dashed line keeps the boundary readable on streets and satellite alike.
+const boundaryLayer = L.layerGroup([
+  L.geoJSON(BOUNDARY, { interactive: false, style: { color: '#fff', weight: 5, opacity: 0.8, fill: false } }),
+  L.geoJSON(BOUNDARY, { interactive: false, style: { color: '#2f3b38', weight: 2, dashArray: '6 5', fillColor: '#2f3b38', fillOpacity: 0.04 } })
+]).addTo(map);
+
+const siteLayer = L.layerGroup().addTo(map);
+const markers = new Map();
+
+L.control.layers(baseLayers, { 'City boundary': boundaryLayer, 'Sites': siteLayer }, { position: 'topright' }).addTo(map);
+L.control.scale({ imperial: false }).addTo(map);
+
+const legend = L.control({ position: 'bottomright' });
+legend.onAdd = () => {
+  const div = L.DomUtil.create('div', 'legend');
+  div.innerHTML = Object.values(CATEGORIES)
+    .map(c => `<div><span class="pin" style="--c:${c.color}">${c.glyph}</span>${c.label}</div>`).join('')
+    + '<div><span class="line"></span>Tumakuru City Corporation</div>';
+  return div;
+};
+legend.addTo(map);
+
+function popupHtml(f) {
+  const p = f.properties;
+  const cat = CATEGORIES[p.category];
+  const rows = p.category === 'Open well rejuvenation'
+    ? [
+        ['Diameter', p.well_diameter_ft && feetToM(p.well_diameter_ft)],
+        ['Depth', p.well_depth_ft && feetToM(p.well_depth_ft)],
+        ['Volume', litres(p.well_volume_l)],
+        ['Households using well', p.households && num(p.households)]
+      ]
+    : [
+        ['Roof area covered', p.roof_area_m2 && `${num(p.roof_area_m2)} m²`],
+        ['RWH sump', litres(p.sump_l)],
+        ['Rain barrel', litres(p.rain_barrel_l)],
+        ['Students', p.students && num(p.students)],
+        ['Teaching staff', p.teaching_staff && num(p.teaching_staff)],
+        ['Daily water demand', litres(p.daily_water_demand_l)],
+        ['Potential rainwater harvest', litres(p.potential_harvest_l)]
+      ];
+  const dl = rows.filter(r => r[1]).map(([k, v]) => `<dt>${k}</dt><dd>${esc(v)}</dd>`).join('');
+  const links = [
+    p.maps_url && `<a href="${esc(p.maps_url)}" target="_blank" rel="noopener">Google Maps ↗</a>`,
+    p.photos_url && `<a href="${esc(p.photos_url)}" target="_blank" rel="noopener">Photos ↗</a>`
+  ].filter(Boolean).join('');
+  return `<div class="pop" style="--c:${cat.color}">
+    <div class="pop-kind">${cat.label} &middot; ${esc(p.institution)}</div>
+    <h3>${esc(p.name)}</h3>
+    <p class="pop-meta">${yearLabel(p.year)} &middot; Funded by ${esc(p.funder)}</p>
+    <ul class="pop-tags">${p.interventions.map(i => `<li>${esc(i)}</li>`).join('')}</ul>
+    ${dl ? `<dl>${dl}</dl>` : ''}
+    ${links}
+  </div>`;
+}
+
+// Sites at the exact same spot (e.g. two buildings of one school) are fanned out
+// sideways in screen pixels so each stays clickable at every zoom level.
+function markerFor(f, dx) {
+  const cat = CATEGORIES[f.properties.category];
+  const icon = L.divIcon({
+    className: 'site-marker',
+    html: `<span class="pin" style="--c:${cat.color}">${cat.glyph}</span>`,
+    iconSize: [24, 24], iconAnchor: [12 - dx, 12], popupAnchor: [dx, -14], tooltipAnchor: [dx, -14]
+  });
+  return L.marker(latLng(f), { icon, title: f.properties.name, riseOnHover: true })
+    .bindPopup(popupHtml(f), { maxWidth: 300 })
+    .bindTooltip(esc(f.properties.name), { direction: 'top' })
+    .on('popupopen', () => setActive(f.properties.id))
+    .on('popupclose', () => setActive(null));
+}
+
+// ---------- Filters ----------
+function matches(f) {
+  const p = f.properties;
+  return (state.category === ALL || p.category === state.category)
+    && (state.year === ALL || p.year === state.year)
+    && (state.funder === ALL || p.funder === state.funder)
+    && (!state.q || `${p.name} ${p.funder} ${p.institution}`.toLowerCase().includes(state.q));
+}
+
+function buildChips() {
+  const unique = key => [...new Set(features.map(f => f.properties[key]))];
+  const options = {
+    category: Object.keys(CATEGORIES),
+    year: unique('year').sort(),
+    funder: unique('funder').sort((a, b) => a.localeCompare(b))
+  };
+  document.querySelectorAll('.chips').forEach(el => {
+    const key = el.dataset.filter;
+    el.innerHTML = [ALL, ...options[key]].map(v => {
+      const label = key === 'category' && v !== ALL ? CATEGORIES[v].label : key === 'year' && v !== ALL ? yearLabel(v) : v;
+      const dot = key === 'category' && v !== ALL ? `<span class="dot" style="--c:${CATEGORIES[v].color}"></span>` : '';
+      return `<button type="button" class="chip" data-value="${esc(v)}">${dot}${esc(label)}</button>`;
+    }).join('');
+    el.addEventListener('click', e => {
+      const chip = e.target.closest('.chip');
+      if (!chip) return;
+      state[key] = chip.dataset.value;
+      render({ fit: true });
+    });
+  });
+}
+
+function syncChips() {
+  document.querySelectorAll('.chips').forEach(el => {
+    el.querySelectorAll('.chip').forEach(c => c.setAttribute('aria-pressed', c.dataset.value === state[el.dataset.filter]));
+  });
+}
+
+// ---------- Render ----------
+function renderKpis(list) {
+  const rwh = list.filter(f => f.properties.category === 'Rooftop rainwater harvesting');
+  const wells = list.filter(f => f.properties.category === 'Open well rejuvenation');
+  // Two buildings of the same school list the same students and staff; count them once.
+  const schools = new Map(rwh.map(f => [`${latLng(f)}|${f.properties.students}|${f.properties.teaching_staff}`, f]));
+  const people = [...schools.values()];
+  const kpis = [
+    [num(list.length), `sites &middot; ${rwh.length} RWH, ${wells.length} wells`],
+    [`${num(sum(rwh, 'roof_area_m2'))} m²`, 'roof area harvested'],
+    [num(sum(people, 'students')), `students &middot; ${num(sum(people, 'teaching_staff'))} staff`],
+    [num(sum(wells, 'households')), 'households using rejuvenated wells']
+  ];
+  document.getElementById('kpis').innerHTML = kpis.map(([v, l]) => `<div class="kpi"><b>${v}</b><span>${l}</span></div>`).join('');
+}
+
+function renderList(list) {
+  document.getElementById('count').textContent = `${list.length} of ${features.length} sites`;
+  document.getElementById('sites').innerHTML = list.length
+    ? list.map(f => {
+        const p = f.properties;
+        return `<li><button type="button" class="site" data-id="${p.id}" style="--c:${CATEGORIES[p.category].color}">
+          <span class="dot"></span><span class="t">${esc(p.name)}</span>
+          <span class="s">${yearLabel(p.year)} &middot; ${esc(p.funder)} &middot; ${esc(p.institution)}</span>
+        </button></li>`;
+      }).join('')
+    : '<li class="empty">No sites match these filters.</li>';
+}
+
+function render({ fit = false } = {}) {
+  const list = features.filter(matches);
+  siteLayer.clearLayers();
+  markers.clear();
+
+  const spots = new Map();
+  list.forEach(f => {
+    const key = latLng(f).join();
+    spots.set(key, [...(spots.get(key) || []), f]);
+  });
+  spots.forEach(group => group.forEach((f, i) => {
+    const marker = markerFor(f, (i - (group.length - 1) / 2) * 20);
+    markers.set(f.properties.id, marker);
+    siteLayer.addLayer(marker);
+  }));
+
+  syncChips();
+  renderKpis(list);
+  renderList(list);
+  if (fit && list.length) fitTo(list);
+}
+
+function fitTo(list) {
+  const bounds = L.latLngBounds(list.map(latLng));
+  if (list.length === features.length) bounds.extend(L.geoJSON(BOUNDARY).getBounds());
+  map.flyToBounds(bounds, { padding: [40, 40], maxZoom: 15, duration: 0.6 });
+}
+
+function setActive(id) {
+  state.active = id;
+  markers.forEach((m, mid) => m.getElement()?.querySelector('.pin')?.classList.toggle('active', mid === id));
+  document.querySelectorAll('.site').forEach(el => el.classList.toggle('active', el.dataset.id === id));
+  if (id) document.querySelector(`.site[data-id="${id}"]`)?.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+}
+
+// ---------- Events ----------
+const sitesEl = document.getElementById('sites');
+sitesEl.addEventListener('click', e => {
+  const btn = e.target.closest('.site');
+  if (!btn) return;
+  const marker = markers.get(btn.dataset.id);
+  if (window.matchMedia('(max-width: 760px)').matches) map.getContainer().scrollIntoView({ behavior: 'smooth' });
+  map.flyTo(marker.getLatLng(), Math.max(map.getZoom(), 15), { duration: 0.6 });
+  map.once('moveend', () => marker.openPopup());
+});
+sitesEl.addEventListener('mouseover', e => {
+  const btn = e.target.closest('.site');
+  markers.forEach((m, id) => m.getElement()?.querySelector('.pin')?.classList.toggle('hover', btn?.dataset.id === id));
+});
+sitesEl.addEventListener('mouseleave', () => markers.forEach(m => m.getElement()?.querySelector('.pin')?.classList.remove('hover')));
+
+document.getElementById('search').addEventListener('input', e => {
+  state.q = e.target.value.trim().toLowerCase();
+  render();
+});
+document.getElementById('reset').addEventListener('click', () => {
+  Object.assign(state, { category: ALL, year: ALL, funder: ALL, q: '' });
+  document.getElementById('search').value = '';
+  render({ fit: true });
+});
+
+buildChips();
+render();
+map.fitBounds(L.latLngBounds(features.map(latLng)).extend(L.geoJSON(BOUNDARY).getBounds()), { padding: [30, 30] });
+</script>
+</body>
+</html>

@@ -1,0 +1,660 @@
+{
+ "type": "FeatureCollection",
+ "features": [
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     77.107993,
+     13.3334
+    ]
+   },
+   "properties": {
+    "id": "rwh-01",
+    "category": "Rooftop rainwater harvesting",
+    "institution": "School",
+    "name": "GMHPS High School Extension",
+    "year": "2023-24",
+    "funder": "Wipro",
+    "interventions": [
+     "Roof top RWH",
+     "Recharge well",
+     "Storage sump"
+    ],
+    "roof_area_m2": 400,
+    "sump_l": 11000,
+    "rain_barrel_l": null,
+    "students": 135,
+    "teaching_staff": 6,
+    "daily_water_demand_l": 2800,
+    "potential_harvest_l": 19200,
+    "maps_url": "https://goo.gl/maps/4EPjBVayABD1xM3x5",
+    "photos_url": null
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     77.090231,
+     13.290943
+    ]
+   },
+   "properties": {
+    "id": "rwh-02",
+    "category": "Rooftop rainwater harvesting",
+    "institution": "School",
+    "name": "GMHPS Guluru school",
+    "year": "2023-24",
+    "funder": "Wipro",
+    "interventions": [
+     "Roof top RWH",
+     "Recharge well",
+     "Storage sump"
+    ],
+    "roof_area_m2": 450,
+    "sump_l": 12000,
+    "rain_barrel_l": null,
+    "students": 220,
+    "teaching_staff": 7,
+    "daily_water_demand_l": 4600,
+    "potential_harvest_l": 23220,
+    "maps_url": "https://goo.gl/maps/JxorUCCX73FRgXTi6",
+    "photos_url": null
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     77.051263,
+     13.376782
+    ]
+   },
+   "properties": {
+    "id": "rwh-03",
+    "category": "Rooftop rainwater harvesting",
+    "institution": "School",
+    "name": "GMHPS Bugudanahalli school",
+    "year": "2023-24",
+    "funder": "Wipro",
+    "interventions": [
+     "Roof top RWH",
+     "Recharge well",
+     "Storage sump"
+    ],
+    "roof_area_m2": 390,
+    "sump_l": 11000,
+    "rain_barrel_l": null,
+    "students": 175,
+    "teaching_staff": 7,
+    "daily_water_demand_l": 3600,
+    "potential_harvest_l": 20124,
+    "maps_url": "https://goo.gl/maps/MpfFMMs9ktvBZqcH7",
+    "photos_url": null
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     77.066076,
+     13.439467
+    ]
+   },
+   "properties": {
+    "id": "rwh-04",
+    "category": "Rooftop rainwater harvesting",
+    "institution": "School",
+    "name": "GMHPS Kora school",
+    "year": "2023-24",
+    "funder": "Wipro",
+    "interventions": [
+     "Roof top RWH",
+     "Recharge well",
+     "Storage sump"
+    ],
+    "roof_area_m2": 390,
+    "sump_l": 15000,
+    "rain_barrel_l": null,
+    "students": 225,
+    "teaching_staff": 8,
+    "daily_water_demand_l": 4660,
+    "potential_harvest_l": 20124,
+    "maps_url": "https://goo.gl/maps/yNGUzjT4o7QSVcwo9",
+    "photos_url": null
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     77.13433,
+     13.311818
+    ]
+   },
+   "properties": {
+    "id": "rwh-05",
+    "category": "Rooftop rainwater harvesting",
+    "institution": "School",
+    "name": "GMHPS Badihalli",
+    "year": "2024-25",
+    "funder": "Wipro",
+    "interventions": [
+     "Roof top RWH",
+     "Recharge well",
+     "Storage sump"
+    ],
+    "roof_area_m2": 339,
+    "sump_l": 9410,
+    "rain_barrel_l": null,
+    "students": 139,
+    "teaching_staff": 6,
+    "daily_water_demand_l": 3000,
+    "potential_harvest_l": 17492,
+    "maps_url": "https://goo.gl/maps/iw96omCVPbrBfTW57",
+    "photos_url": null
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     77.107714,
+     13.333818
+    ]
+   },
+   "properties": {
+    "id": "rwh-06",
+    "category": "Rooftop rainwater harvesting",
+    "institution": "School",
+    "name": "GHS High School Extn",
+    "year": "2024-25",
+    "funder": "Wipro",
+    "interventions": [
+     "Roof top RWH",
+     "Recharge well",
+     "Storage sump"
+    ],
+    "roof_area_m2": 398,
+    "sump_l": 14000,
+    "rain_barrel_l": null,
+    "students": 126,
+    "teaching_staff": 14,
+    "daily_water_demand_l": 2800,
+    "potential_harvest_l": 20536,
+    "maps_url": "https://maps.app.goo.gl/b8Kzg7doeY8xEoMB8",
+    "photos_url": null
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     77.018634,
+     13.411697
+    ]
+   },
+   "properties": {
+    "id": "rwh-07",
+    "category": "Rooftop rainwater harvesting",
+    "institution": "School",
+    "name": "KPS Bellavi High Building 1",
+    "year": "2024-25",
+    "funder": "Wipro",
+    "interventions": [
+     "Roof top RWH",
+     "Recharge well",
+     "Storage sump"
+    ],
+    "roof_area_m2": 331,
+    "sump_l": 9000,
+    "rain_barrel_l": null,
+    "students": 472,
+    "teaching_staff": 23,
+    "daily_water_demand_l": 10000,
+    "potential_harvest_l": 17079,
+    "maps_url": "https://maps.app.goo.gl/b2Gzv7wzWD1czCcR8",
+    "photos_url": null
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     77.016591,
+     13.413391
+    ]
+   },
+   "properties": {
+    "id": "rwh-08",
+    "category": "Rooftop rainwater harvesting",
+    "institution": "School",
+    "name": "KPS Bellavi Primary (HM Building)",
+    "year": "2024-25",
+    "funder": "Wipro",
+    "interventions": [
+     "Roof top RWH",
+     "Recharge well",
+     "Storage sump"
+    ],
+    "roof_area_m2": 356,
+    "sump_l": 10500,
+    "rain_barrel_l": null,
+    "students": 620,
+    "teaching_staff": 25,
+    "daily_water_demand_l": 13000,
+    "potential_harvest_l": 18369,
+    "maps_url": "https://goo.gl/maps/7TCH2MQvXwNY8NUj6",
+    "photos_url": null
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     77.016591,
+     13.413391
+    ]
+   },
+   "properties": {
+    "id": "rwh-09",
+    "category": "Rooftop rainwater harvesting",
+    "institution": "School",
+    "name": "KPS Bellavi Primary (Bore Well Building)",
+    "year": "2024-25",
+    "funder": "Wipro",
+    "interventions": [
+     "Roof top RWH",
+     "Recharge well",
+     "Storage sump"
+    ],
+    "roof_area_m2": 339,
+    "sump_l": 9500,
+    "rain_barrel_l": null,
+    "students": 620,
+    "teaching_staff": 25,
+    "daily_water_demand_l": 13000,
+    "potential_harvest_l": 17492,
+    "maps_url": "https://goo.gl/maps/7TCH2MQvXwNY8NUj6",
+    "photos_url": null
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     77.11271,
+     13.377118
+    ]
+   },
+   "properties": {
+    "id": "rwh-10",
+    "category": "Rooftop rainwater harvesting",
+    "institution": "School",
+    "name": "GMHPS Antharasanahalli",
+    "year": "2024-25",
+    "funder": "Wipro",
+    "interventions": [
+     "Roof top RWH",
+     "Recharge well",
+     "Storage sump"
+    ],
+    "roof_area_m2": 261,
+    "sump_l": 7500,
+    "rain_barrel_l": null,
+    "students": 150,
+    "teaching_staff": 6,
+    "daily_water_demand_l": 3500,
+    "potential_harvest_l": 13467,
+    "maps_url": "https://goo.gl/maps/UTYsXoMGJMMbgrXK9",
+    "photos_url": null
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     77.103244,
+     13.33003
+    ]
+   },
+   "properties": {
+    "id": "rwh-11",
+    "category": "Rooftop rainwater harvesting",
+    "institution": "School",
+    "name": "GMHPS AS Palya (Shanthinagara)",
+    "year": "2024-25",
+    "funder": "Light & Wonder",
+    "interventions": [
+     "Roof top RWH",
+     "Recharge well"
+    ],
+    "roof_area_m2": 250,
+    "sump_l": null,
+    "rain_barrel_l": null,
+    "students": 75,
+    "teaching_staff": 6,
+    "daily_water_demand_l": 2500,
+    "potential_harvest_l": 12900,
+    "maps_url": "https://maps.app.goo.gl/usB5ivkdpHv2jXPJA",
+    "photos_url": null
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     77.082733,
+     13.352294
+    ]
+   },
+   "properties": {
+    "id": "rwh-12",
+    "category": "Rooftop rainwater harvesting",
+    "institution": "School",
+    "name": "GMHPS Dibbur",
+    "year": "2024-25",
+    "funder": "Light & Wonder",
+    "interventions": [
+     "Roof top RWH",
+     "Recharge well"
+    ],
+    "roof_area_m2": 245,
+    "sump_l": null,
+    "rain_barrel_l": null,
+    "students": 150,
+    "teaching_staff": 6,
+    "daily_water_demand_l": 3500,
+    "potential_harvest_l": 12642,
+    "maps_url": "https://maps.app.goo.gl/hpjwd4ajSYSnQXa4A",
+    "photos_url": null
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     77.071146,
+     13.346806
+    ]
+   },
+   "properties": {
+    "id": "rwh-13",
+    "category": "Rooftop rainwater harvesting",
+    "institution": "School",
+    "name": "GMHPS Bhimasandra",
+    "year": "2024-25",
+    "funder": "Light & Wonder",
+    "interventions": [
+     "Roof top RWH",
+     "Recharge well"
+    ],
+    "roof_area_m2": 210,
+    "sump_l": null,
+    "rain_barrel_l": null,
+    "students": 115,
+    "teaching_staff": 9,
+    "daily_water_demand_l": 3000,
+    "potential_harvest_l": 10836,
+    "maps_url": "https://maps.app.goo.gl/udELsTSYAcprrDHR7",
+    "photos_url": null
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     77.14239,
+     13.352588
+    ]
+   },
+   "properties": {
+    "id": "rwh-14",
+    "category": "Rooftop rainwater harvesting",
+    "institution": "School",
+    "name": "GHPS Belagumba",
+    "year": "2024-25",
+    "funder": "Light & Wonder",
+    "interventions": [
+     "Roof top RWH",
+     "Recharge well"
+    ],
+    "roof_area_m2": 240,
+    "sump_l": null,
+    "rain_barrel_l": null,
+    "students": 90,
+    "teaching_staff": 6,
+    "daily_water_demand_l": 3000,
+    "potential_harvest_l": 12384,
+    "maps_url": "https://goo.gl/maps/UiS1Fo4CqUEvXjzf8",
+    "photos_url": null
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     77.13433,
+     13.311818
+    ]
+   },
+   "properties": {
+    "id": "rwh-15",
+    "category": "Rooftop rainwater harvesting",
+    "institution": "Hostel",
+    "name": "BCWD 2447, Railway Station Road Hostel",
+    "year": "2025-26",
+    "funder": "Give Do",
+    "interventions": [
+     "Roof top RWH",
+     "Recharge well",
+     "Rain Barrel"
+    ],
+    "roof_area_m2": 279,
+    "sump_l": null,
+    "rain_barrel_l": 3000,
+    "students": 80,
+    "teaching_staff": 6,
+    "daily_water_demand_l": [
+     20000,
+     25000
+    ],
+    "potential_harvest_l": 14396,
+    "maps_url": "https://goo.gl/maps/iw96omCVPbrBfTW57",
+    "photos_url": null
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     77.06523,
+     13.21554
+    ]
+   },
+   "properties": {
+    "id": "rwh-16",
+    "category": "Rooftop rainwater harvesting",
+    "institution": "Hostel",
+    "name": "BCWD 2446, Saibadavana Girls Hostel",
+    "year": "2026-27",
+    "funder": "Imagine Tech",
+    "interventions": [
+     "Roof top RWH",
+     "Recharge well",
+     "Rain Barrel"
+    ],
+    "roof_area_m2": 460,
+    "sump_l": null,
+    "rain_barrel_l": 5000,
+    "students": 150,
+    "teaching_staff": 6,
+    "daily_water_demand_l": 35000,
+    "potential_harvest_l": 27600,
+    "maps_url": "https://maps.app.goo.gl/mzYJK8qWyVZjNUdCA",
+    "photos_url": null
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     77.07198,
+     13.22016
+    ]
+   },
+   "properties": {
+    "id": "rwh-17",
+    "category": "Rooftop rainwater harvesting",
+    "institution": "Hostel",
+    "name": "BCWD 2437, Sathamangala Boys Hostel",
+    "year": "2026-27",
+    "funder": "Imagine Tech",
+    "interventions": [
+     "Roof top RWH",
+     "Recharge well",
+     "Rain Barrel"
+    ],
+    "roof_area_m2": 242,
+    "sump_l": null,
+    "rain_barrel_l": 5000,
+    "students": 163,
+    "teaching_staff": 6,
+    "daily_water_demand_l": 40000,
+    "potential_harvest_l": 12487,
+    "maps_url": "https://maps.app.goo.gl/UDvFZZBtdw7adb4EA",
+    "photos_url": null
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     77.107972,
+     13.328972
+    ]
+   },
+   "properties": {
+    "id": "well-01",
+    "category": "Open well rejuvenation",
+    "institution": "Open well",
+    "name": "Upprahalli Well",
+    "year": "2023-24",
+    "funder": "Wipro",
+    "interventions": [
+     "Well Cleaning",
+     "Fixed motor collection & Tank installed"
+    ],
+    "well_diameter_ft": 9,
+    "well_depth_ft": 45,
+    "well_volume_l": 81000,
+    "households": 70,
+    "maps_url": "https://goo.gl/maps/429QpkiDpQqcaxTM9",
+    "photos_url": null
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     77.140975,
+     13.331376
+    ]
+   },
+   "properties": {
+    "id": "well-02",
+    "category": "Open well rejuvenation",
+    "institution": "Open well",
+    "name": "Devarapatana Well Ward No 35",
+    "year": "2023-24",
+    "funder": "Wipro",
+    "interventions": [
+     "Well Cleaning",
+     "Fixed grill & motor collection & Tank installed to school"
+    ],
+    "well_diameter_ft": 6.3,
+    "well_depth_ft": 23,
+    "well_volume_l": 21500,
+    "households": 30,
+    "maps_url": "https://goo.gl/maps/7xbKWkVSKLjSkEks7",
+    "photos_url": null
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     77.151572,
+     13.308374
+    ]
+   },
+   "properties": {
+    "id": "well-03",
+    "category": "Open well rejuvenation",
+    "institution": "Open well",
+    "name": "Indria Nagara Well Ward no 34, Kythasandra",
+    "year": "2023-24",
+    "funder": "Wipro",
+    "interventions": [
+     "Well Cleaning",
+     "Fixed Grill"
+    ],
+    "well_diameter_ft": 6.3,
+    "well_depth_ft": 21,
+    "well_volume_l": 18500,
+    "households": 70,
+    "maps_url": "https://goo.gl/maps/sxde8NMsUYfjWnxN6",
+    "photos_url": null
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     77.148571,
+     13.314638
+    ]
+   },
+   "properties": {
+    "id": "well-04",
+    "category": "Open well rejuvenation",
+    "institution": "Open well",
+    "name": "Maruthi Nagar Ward no 34, Kythasandra",
+    "year": "2024-25",
+    "funder": "Wipro",
+    "interventions": [
+     "Well Cleaning",
+     "Fixed Grill"
+    ],
+    "well_diameter_ft": null,
+    "well_depth_ft": null,
+    "well_volume_l": null,
+    "households": null,
+    "maps_url": "https://maps.app.goo.gl/2PC4WFxpfChKd7ux8",
+    "photos_url": null
+   }
+  }
+ ]
+}
