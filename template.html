@@ -135,7 +135,7 @@
     <footer>
       <p>Sites and photos: BIOME Work at Tumkur Locations.</p>
       <p>Boundary: KGIS, Tumakuru City Corporation (town code 1810).</p>
-      <p>Built __BUILD_DATE__.</p>
+      <p>Data refreshed __BUILD_TIME__.</p>
     </footer>
   </aside>
   <main id="map" aria-label="Map of sites"></main>
@@ -233,7 +233,7 @@ function popupHtml(f) {
         ['Students', p.students && num(p.students)],
         ['Teaching staff', p.teaching_staff && num(p.teaching_staff)],
         ['Daily water demand', litres(p.daily_water_demand_l)],
-        ['Potential rainwater harvest', litres(p.potential_harvest_l)]
+        [p.rainfall_mm ? `Potential harvest (${p.rainfall_mm} mm rain)` : 'Potential rainwater harvest', litres(p.potential_harvest_l)]
       ];
   const dl = rows.filter(r => r[1]).map(([k, v]) => `<dt>${k}</dt><dd>${esc(v)}</dd>`).join('');
   // Photos live in BIOME's shared SharePoint folders, which can't be embedded, so they open in a new tab.

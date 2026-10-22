@@ -6,15 +6,17 @@ own header row starting with "Date,Sl.No":
   2. Open wells         -> open well rejuvenation
 Sheet "Summary" adds a locality for each school, matched on Sl.No.
 Unlike a CSV export, the Excel keeps the hyperlinks behind the picture cells.
+
+Usage: python create_geojson_from_excel.py <workbook.xlsx>
 """
 import json
 import re
+import sys
 from pathlib import Path
 
 import openpyxl
 
 HERE = Path(__file__).resolve().parent
-XLSX_PATH = HERE.parent / 'BIOME Work at Tumkur Locations.xlsx'
 OUT_PATH = HERE / 'biome_work_tumkur.geojson'
 
 RWH = 'Rooftop rainwater harvesting'
@@ -60,14 +62,18 @@ def interventions(cell):
 
 
 def split_tables(ws):
-    """Yield one list of {header: cell} dicts per table on the sheet."""
+    """Yield one list of {header: cell} dicts per table on the sheet.
+
+    A trailing unit in a header is dropped ('Well Depth (Feet)' -> 'Well Depth'),
+    so adding units to column names in the sheet doesn't break the lookups below.
+    """
     header, rows = None, []
     for cells in ws.iter_rows():
         values = [text(c) for c in cells]
         if values[0] == 'Date':
             if rows:
                 yield rows
-            header, rows = values, []
+            header, rows = [re.sub(r'\s*\([^)]*\)$', '', v) for v in values], []
         elif header and any(values):
             rows.append(dict(zip(header, cells)))
     if rows:
@@ -105,6 +111,7 @@ def rwh_properties(row, locality):
         'teaching_staff': number(row['Teaching Staff']),
         'daily_water_demand_l': litres_range(row['Daily Water Demand']),
         'potential_harvest_l': number(row['Potential Rainwater harvested']),
+        'rainfall_mm': number(row['Rainfall MM']) if 'Rainfall MM' in row else None,
         'maps_url': link(row['Locations']),
         'photos_url': link(row['Link - Pictures']),
     }
@@ -119,18 +126,18 @@ def well_properties(row, locality):
         'year': year(row['Date']),
         'funder': text(row['Funded By']),
         'interventions': interventions(row['What we did']),
-        # Source columns carry no units; feet fits the recorded volumes
-        # (e.g. 9 x 45 -> pi * (9 ft / 2)^2 * 45 ft = 81,000 L).
         'well_diameter_ft': number(row['Well dimentions']),
         'well_depth_ft': number(row['Well Depth']),
-        'well_volume_l': number(row['Well Volume (Litres)']),
+        'well_volume_l': number(row['Well Volume']),
         'households': number(row['Households using the well']),
         'maps_url': link(row['Locations']),
         'photos_url': link(row['Link']),
     }
 
 
-wb = openpyxl.load_workbook(XLSX_PATH, data_only=True)
+if len(sys.argv) != 2:
+    sys.exit(__doc__)
+wb = openpyxl.load_workbook(sys.argv[1], data_only=True)
 rwh_rows, well_rows = split_tables(wb['BIOME Work Details'])
 school_localities = localities(wb['Summary'])
 

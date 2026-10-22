@@ -1,2 +1,9 @@
 .DS_Store
 __pycache__/
+# Built by the refresh workflow (and locally); not tracked so there is one source of truth.
+index.html
+biome_work_tumkur.geojson
+# Local downloads of the SharePoint workbook
+workbook.xlsx
+cookies.txt
+_site/

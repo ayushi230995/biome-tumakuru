@@ -1,0 +1,60 @@
+name: Refresh map from SharePoint
+
+# Rebuilds the site from BIOME's SharePoint workbook every hour, on demand
+# (Actions tab > Run workflow), and on every push to main. If the download or
+# the build fails, nothing is deployed and the last good version stays live.
+on:
+  schedule:
+    - cron: '17 * * * *'
+  workflow_dispatch:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - run: pip install openpyxl==3.1.5
+
+      - name: Download workbook
+        # The share link is a repo secret so it never appears in this public repo.
+        env:
+          SHAREPOINT_XLSX_URL: ${{ secrets.SHAREPOINT_XLSX_URL }}
+        run: >
+          curl --fail --silent --show-error --location
+          --cookie-jar cookies.txt --cookie cookies.txt
+          --output workbook.xlsx "${SHAREPOINT_XLSX_URL}&download=1"
+
+      - run: python create_geojson_from_excel.py workbook.xlsx
+
+      - run: python build_index_html.py
+
+      # Publish only the page, never the downloaded workbook.
+      - run: mkdir _site && cp index.html _site/
+
+      - uses: actions/upload-pages-artifact@v3
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
